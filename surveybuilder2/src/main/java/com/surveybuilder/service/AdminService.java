@@ -11,5 +11,6 @@ public interface AdminService {
 	public Admin updateAdminService(Admin s, long id) throws ResourceNotFoundException;
 	public boolean deleteAdminByIdService(long id) throws ResourceNotFoundException;
 	public List<Admin> listAllAdminService();
+	public Admin authAdmin(long id, String pass);
 	
 }

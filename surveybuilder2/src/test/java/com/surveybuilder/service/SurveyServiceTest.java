@@ -79,7 +79,7 @@ class SurveyServiceTest {
 	    Mockito.when(surveyRepository.findById(Mockito.anyLong())).thenReturn(a);
 	    Mockito.when(surveyRepository.save(Mockito.any(Survey.class))).thenReturn(survey);
 	    
-	    Survey result = surveyService.updateSurveyService(survey, 101);
+	    Survey result = surveyService.updateSurveyService(survey);
 	    
 	    assertThat(survey).isEqualTo(result);
 	}

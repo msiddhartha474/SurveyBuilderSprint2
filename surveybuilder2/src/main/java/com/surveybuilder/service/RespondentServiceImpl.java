@@ -65,4 +65,10 @@ public class RespondentServiceImpl implements RespondentService{
 		return rr.findAll();
 	}
 
+	@Override
+	public Respondent authRespondent(String emailId, String pass) {
+		
+		return rr.authRespondent(emailId, pass);
+	}
+
 }

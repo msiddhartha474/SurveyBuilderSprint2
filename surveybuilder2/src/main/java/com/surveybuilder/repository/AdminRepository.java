@@ -12,4 +12,7 @@ public interface AdminRepository extends JpaRepository<Admin, Long>{
 	@Query("select a from Admin a where a.adminId = ?1")
 	public Admin findAdminById(Long id);
 
+	@Query("select a from Admin a where (a.adminId = ?1 and a.password = ?2)")
+	public Admin authAdmin(long id, String pass);
+
 }

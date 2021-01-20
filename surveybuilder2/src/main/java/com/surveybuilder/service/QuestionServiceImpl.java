@@ -65,4 +65,9 @@ public class QuestionServiceImpl implements QuestionService{
 		return qr.findAll();
 	}
 
+	@Override
+	public List<Question> getQuestionBySurveyIdService(long id) {
+		return qr.getQuestionBySurveyId(id);
+	}
+
 }

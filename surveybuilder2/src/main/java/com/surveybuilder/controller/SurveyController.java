@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.surveybuilder.enitity.Survey;
 import com.surveybuilder.exception.ResourceNotFoundException;
 import com.surveybuilder.service.SurveyService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class SurveyController{
 	
@@ -23,9 +26,10 @@ public class SurveyController{
 	private SurveyService ss;
 	
 
+	
 	@PostMapping("createSurvey")
 	public Survey createSurveyController(@RequestBody Survey survey) {
-		return ss.createSurveyService(survey);
+		return ss.createSurveyService(survey);	
 	}
 	
 	@GetMapping("viewSurveyById/{id}")
@@ -43,9 +47,9 @@ public class SurveyController{
 		return s1;
 	}
 	
-	@PutMapping("updateSurvey/{id}")
-	public Survey updateSurveyController(@RequestBody Survey survey, @PathVariable("id") long id) throws ResourceNotFoundException {
-		return ss.updateSurveyService(survey, id);
+	@PutMapping("updateSurvey")
+	public Survey updateSurveyController(@RequestBody Survey survey) throws ResourceNotFoundException {
+		return ss.updateSurveyService(survey);
 	}
 	
 	@DeleteMapping("deleteSurveyById/{id}")

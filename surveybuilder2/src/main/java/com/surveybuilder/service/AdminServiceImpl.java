@@ -65,4 +65,9 @@ public class AdminServiceImpl implements AdminService{
 		return sr.findAll();
 	}
 
+	@Override
+	public Admin authAdmin(long id, String pass) {
+		return sr.authAdmin(id, pass);
+	}
+
 }

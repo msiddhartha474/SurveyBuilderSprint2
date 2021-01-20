@@ -8,7 +8,7 @@ import com.surveybuilder.exception.ResourceNotFoundException;
 public interface SurveyService {
 	public Survey createSurveyService(Survey s);
 	public Survey viewSurveyByIdService(long id);
-	public Survey updateSurveyService(Survey s, long id) throws ResourceNotFoundException;
+	public Survey updateSurveyService(Survey s) throws ResourceNotFoundException;
 	public boolean deleteSurveyByIdService(long id) throws ResourceNotFoundException;
 	public List<Survey> listAllSurveyService();
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,12 +18,28 @@ import com.surveybuilder.exception.ResourceNotFoundException;
 import com.surveybuilder.service.SurveyorService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class SurveyorController{
 	
 	@Autowired
 	private SurveyorService ss;
 	
 
+	@GetMapping("authSurveyor/{emailId}/{pass}")
+	public Surveyor authSurveyorController(@PathVariable("emailId") String emailId, @PathVariable("pass") String pass){
+		Surveyor s = ss.authSurveyor(emailId, pass);
+		
+		if( s != null) {
+			Surveyor s1 = new Surveyor();
+			s1.setEmailId(s.getEmailId());
+			s1.setName(s.getName());
+			s1.setPassword(s.getPassword());
+			s1.setSurveyorId(s.getSurveyorId());
+			return s1;
+		}else
+			return null;
+	}
+	
 	@PostMapping("createSurveyor")
 	public Surveyor createSurveyorController(@RequestBody Surveyor s) {
 		return ss.createSurveyorService(s);

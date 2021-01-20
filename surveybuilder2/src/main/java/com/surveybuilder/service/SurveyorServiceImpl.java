@@ -65,4 +65,10 @@ public class SurveyorServiceImpl implements SurveyorService{
 		return rr.findAll();
 	}
 
+	@Override
+	public Surveyor authSurveyor(String emailId, String pass) {
+		// TODO Auto-generated method stub
+		return rr.authSurveyor(emailId, pass);
+	}
+
 }

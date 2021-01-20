@@ -11,5 +11,6 @@ public interface SurveyorService {
 	public Surveyor updateSurveyorService(Surveyor s, long id) throws ResourceNotFoundException;
 	public boolean deleteSurveyorByIdService(long id) throws ResourceNotFoundException;
 	public List<Surveyor> listAllSurveyorService();
+	public Surveyor authSurveyor(String emailId, String pass);
 	
 }

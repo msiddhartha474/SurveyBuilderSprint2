@@ -11,5 +11,6 @@ public interface QuestionService {
 	public Question updateQuestionService(Question s, long id) throws ResourceNotFoundException ;
 	public boolean deleteQuestionByIdService(long id) throws ResourceNotFoundException ;
 	public List<Question> listAllQuestionService();
+	public List<Question> getQuestionBySurveyIdService(long id);
 	
 }

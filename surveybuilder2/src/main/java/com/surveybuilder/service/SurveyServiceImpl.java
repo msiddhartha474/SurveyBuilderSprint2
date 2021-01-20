@@ -37,11 +37,7 @@ public class SurveyServiceImpl implements SurveyService{
 	}
 
 	@Override
-	public Survey updateSurveyService(Survey s, long id) throws ResourceNotFoundException {
-		Survey a = rr.findById(id).orElseThrow(() -> new ResourceNotFoundException("Survey not found for this id :: " + id));
-		
-		s.setSid(a.getSid());
-		
+	public Survey updateSurveyService(Survey s) throws ResourceNotFoundException {
 		final Survey updatedA= rr.save(s);
 		return updatedA;
 	}

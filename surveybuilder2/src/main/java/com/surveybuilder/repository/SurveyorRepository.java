@@ -12,4 +12,6 @@ public interface SurveyorRepository extends JpaRepository<Surveyor, Long>{
 	@Query("select s from Surveyor s where s.surveyorId = ?1")
 	public Surveyor findSurveyorById(Long id);
 
+	@Query("select a from Surveyor a where (a.emailId = ?1 and a.password = ?2)")
+	public Surveyor authSurveyor(String emailId, String pass);
 }

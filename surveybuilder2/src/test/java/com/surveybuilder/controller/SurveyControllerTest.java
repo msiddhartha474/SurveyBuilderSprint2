@@ -80,12 +80,12 @@ class SurveyControllerTest {
 
 	@Test
 	void testUpdateSurveyService() throws Exception {
-		String URI = "/updateSurvey/{id}";
+		String URI = "/updateSurvey";
 		Survey survey = getSurvey();
 	    String jsonInput = this.converttoJson(survey);
 
-	    Mockito.when(surveyService.updateSurveyService(Mockito.any(Survey.class), Mockito.anyLong())).thenReturn(survey);
-	    MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.put(URI, 101).accept(MediaType.APPLICATION_JSON).content(jsonInput).contentType(MediaType.APPLICATION_JSON))
+	    Mockito.when(surveyService.updateSurveyService(Mockito.any(Survey.class))).thenReturn(survey);
+	    MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.put(URI).accept(MediaType.APPLICATION_JSON).content(jsonInput).contentType(MediaType.APPLICATION_JSON))
                 .andReturn(); MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
 	    String jsonOutput = mockHttpServletResponse.getContentAsString();
 	    assertThat(jsonInput).isEqualTo(jsonOutput);

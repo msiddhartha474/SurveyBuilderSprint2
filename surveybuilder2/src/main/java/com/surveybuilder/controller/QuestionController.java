@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.surveybuilder.exception.ResourceNotFoundException;
 import com.surveybuilder.service.QuestionService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class QuestionController{
 	
 	@Autowired
@@ -62,6 +64,27 @@ public class QuestionController{
 		List<Question> lst = new ArrayList<Question>();
 		
 		for(Question q: ss.listAllQuestionService()) {
+			Question q1 = new Question();
+			
+			q1.setQid(q.getQid());
+			q1.setQuestion(q.getQuestion());
+			q1.setOption1(q.getOption1());
+			q1.setOption2(q.getOption2());
+			q1.setOption3(q.getOption3());
+			q1.setOption4(q.getOption4());
+			
+			lst.add(q1);
+		}
+		
+		return lst;
+	}
+	
+	@GetMapping("getQuestionBySurveyId/{id}")
+	public List<Question> getQuestionBySurveyId(@PathVariable("id") Long id){
+
+		List<Question> lst = new ArrayList<Question>();
+		
+		for(Question q: ss.getQuestionBySurveyIdService(id)) {
 			Question q1 = new Question();
 			
 			q1.setQid(q.getQid());

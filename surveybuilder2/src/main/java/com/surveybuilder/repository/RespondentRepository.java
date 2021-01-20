@@ -12,4 +12,6 @@ public interface RespondentRepository extends JpaRepository<Respondent, Long>{
 	public Respondent findRespondentById(Long id);
 
 
+	@Query("select a from Respondent a where (a.emailId  = ?1 and a.password = ?2)")
+	public Respondent authRespondent(String emailId, String pass);
 }
